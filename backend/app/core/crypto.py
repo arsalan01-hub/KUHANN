@@ -22,7 +22,7 @@ def _fernet_key() -> bytes:
     if configured:
         return configured.encode("utf-8")
     # Deterministic development fallback: derives a valid Fernet key from the
-    # application secret. Production deployments must set APP_ENCRYPTION_KEY.
+    # application secret. Production deployments must set ENCRYPTION_KEY.
     digest = hashlib.sha256(settings.secret_key.encode("utf-8")).digest()
     return base64.urlsafe_b64encode(digest)
 
